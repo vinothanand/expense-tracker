@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #6366f1;
+  --secondary-color: #ec4899;
+  --bg-gradient: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  
+  --text-main: #f8fafc;
+  --text-muted: #cbd5e1;
+  --success: #10b981;
+  --danger: #ef4444;
+  
+  font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: var(--text-main);
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-width: 320px;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+#root {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Glassmorphism Generic Card */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 24px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Buttons */
+button {
+  border-radius: 12px;
+  border: 1px solid transparent;
+  padding: 0.75em 1.5em;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button.danger {
+  background: var(--danger);
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+}
+
+button.danger:hover {
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.6);
+}
+
+/* Inputs */
+input, select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+  border-color: var(--primary-color);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Option tags inside select need a solid background since opacity doesn't always apply well to OS default dropdowns */
+select option {
+  background: #1e1b4b;
+  color: white;
+}
+
+/* Specific Layout Utilities */
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-success { color: var(--success); }
+.text-danger { color: var(--danger); }
